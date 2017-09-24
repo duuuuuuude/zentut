@@ -5,11 +5,16 @@ void init(int *head, int *tail) {
 }
 
 void enqueue(int *q, int *tail, int element) {
-    q[(*tail)++] = element;
+    // q[(*tail)++] = element; // ORIGINAL VERSION
+    q[*tail] = element;
+    *tail = *tail + 1;
 }
 
 int dequeue(int *q, int *head) {
-    return q[(*head)++];
+    // return q[(*head)++]; // ORIGINAL VERSION
+    int ret = q[*head];
+    *head = *head + 1;
+    return ret;
 }
 
 int full(int tail, const int size) {
